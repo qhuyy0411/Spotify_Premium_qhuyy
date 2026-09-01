@@ -1,0 +1,16 @@
+[General]
+bypass-system = true
+skip-proxy = 192.168.0.0/16, 10.0.0.0/8, 172.16.0.0/12, localhost, *.local
+bypass-tun = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/12, 192.168.0.0/16, 224.0.0.0/4, 255.255.255.255/32
+
+[MITM]
+hostname = gads.spotify.com, spclient.wg.spotify.com
+
+[URL Rewrite]
+# Chặn máy chủ phân phối quảng cáo hình ảnh và âm thanh
+^https?:\/\/gads\.spotify\.com reject
+^https?:\/\/spclient\.wg\.spotify\.com\/ads\/ reject
+^https?:\/\/spclient\.wg\.spotify\.com\/ad-logic\/ reject
+
+# Chặn luồng theo dõi thương mại
+^https?:\/\/spclient\.wg\.spotify\.com\/bootstrap\/v1\/bootstrap reject
