@@ -6,11 +6,10 @@ bypass-tun = 10.0.0.0/8, 100.64.0.0/10, 127.0.0.0/8, 169.254.0.0/16, 172.16.0.0/
 [MITM]
 hostname = gads.spotify.com, spclient.wg.spotify.com
 
+[Script]
+# Liên kết Raw file JS Spotify của bạn
+Spotify_AdBlock = type=http-response,pattern=^https?:\/\/spclient\.wg\.spotify\.com\/(bootstrap\/v1\/bootstrap|user-customization-service\/v1\/customize|ad-logic|ads),script-path=https://raw.githubusercontent.com/qhuyy0411/Spotify_Premium_qhuyy/refs/heads/main/js,requires-body=true,max-size=524288,timeout=10
+
 [URL Rewrite]
-# Chặn máy chủ phân phối quảng cáo hình ảnh và âm thanh
 ^https?:\/\/gads\.spotify\.com reject
 ^https?:\/\/spclient\.wg\.spotify\.com\/ads\/ reject
-^https?:\/\/spclient\.wg\.spotify\.com\/ad-logic\/ reject
-
-# Chặn luồng theo dõi thương mại
-^https?:\/\/spclient\.wg\.spotify\.com\/bootstrap\/v1\/bootstrap reject
